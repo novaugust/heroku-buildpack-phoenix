@@ -40,6 +40,14 @@ cached_node=$cache_path/node-v$node_version-linux-x64.tar.gz
 check_stack
 clean_cache
 
+head "Installing node"
+download_node
+install_node
+install_npm
+
+head "Building dependencies"
+install_and_cache_npm_deps
+
 head "Installing binaries"
 download_erlang
 install_erlang
@@ -49,13 +57,6 @@ install_elixir
 restore_mix
 install_hex
 install_rebar
-
-download_node
-install_node
-install_npm
-
-head "Building dependencies"
-install_and_cache_npm_deps
 
 restore_app
 app_dependencies

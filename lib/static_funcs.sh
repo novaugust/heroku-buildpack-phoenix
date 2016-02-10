@@ -51,15 +51,15 @@ install_npm() {
 install_and_cache_npm_deps() {
   info "Installing and caching node modules"
   cd $build_path
-  if [ -d $cache_dir/node_modules ]; then
+  if [ -d $cache_path/node_modules ]; then
     mkdir -p node_modules
-    cp -r $cache_dir/node_modules/* node_modules/
+    cp -r $cache_path/node_modules/* node_modules/
   fi
 
   npm install --quiet --unsafe-perm --userconfig $build_path/npmrc 2>&1 | indent
   npm rebuild 2>&1 | indent
   npm --unsafe-perm prune 2>&1 | indent
-  cp -r node_modules $cache_dir
+  cp -r node_modules $cache_path
   PATH=$build_path/node_modules/.bin:$PATH
   install_bower_deps
 }

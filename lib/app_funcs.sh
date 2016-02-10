@@ -29,7 +29,7 @@ function copy_hex() {
 
   cp ${HOME}/.hex/registry.ets ${build_path}/.hex/
 
-  output_section "Copying hex from $full_hex_file_path"
+  output_section "Copying hex from $full_hex_file_path ($hex_file) ($hex_source)"
   cp $full_hex_file_path ${build_path}/.mix/archives
 }
 

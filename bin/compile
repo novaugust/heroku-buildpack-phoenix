@@ -30,7 +30,7 @@ mkdir $(platform_tools_path)
 
 old_node=$(file_contents "$cache_path/node-version")
 
-head "Loading configuration and environment"
+output_section "Loading configuration and environment"
 load_config
 export_config_vars
 export_mix_env
@@ -40,15 +40,15 @@ cached_node=$cache_path/node-v$node_version-linux-x64.tar.gz
 check_stack
 clean_cache
 
-head "Installing node"
+output_section "Installing node"
 download_node
 install_node
 install_npm
 
-head "Building dependencies"
+output_section "Building dependencies"
 install_and_cache_npm_deps
 
-head "Installing binaries"
+output_section "Installing binaries"
 download_erlang
 install_erlang
 

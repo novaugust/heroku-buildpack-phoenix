@@ -76,10 +76,10 @@ run_compile() {
   local custom_compile="${build_path}/${compile}"
 
   if [ -f $custom_compile ]; then
-    info "Running custom compile"
+    output_line "Running custom compile"
     source $custom_compile 2>&1 | indent
   else
-    info "Running default compile"
+    output_line "Running default compile"
     source ${build_pack_path}/${compile} 2>&1 | indent
   fi
 }

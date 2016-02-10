@@ -20,22 +20,12 @@ function output_section() {
   echo "${indentation} $1"
 }
 
-info() {
-  #echo "`date +\"%M:%S\"`  $*"
-  echo "       $*"
-}
-
 indent() {
   c='s/^/       /'
   case $(uname) in
     Darwin) sed -l "$c";; # mac/bsd sed: -l buffers on line boundaries
     *)      sed -u "$c";; # unix/gnu sed: -u unbuffered (arbitrary) chunks of data
   esac
-}
-
-head() {
-  echo ""
-  echo "-----> $*"
 }
 
 file_contents() {

@@ -16,7 +16,7 @@ function copy_hex() {
   mkdir -p ${build_path}/.hex
 
   # hex file names after elixir-1.1 in the hex-<version>.ez form
-  full_hex_file_path=$(ls -t ${HOME}/.mix/archives/hex-*.ez | head -n 1)
+  full_hex_file_path=${HOME}/.mix/archives/$(ls -t ${HOME}/.mix/archives/hex-* | head -n 1)
   output_section "Initial full hex file path is $full_hex_file_path"
   # For older versions of hex which have no version name in file
   if [ -z "$full_hex_file_path" ]; then
@@ -27,7 +27,7 @@ function copy_hex() {
   cp ${HOME}/.hex/registry.ets ${build_path}/.hex/
 
   output_section "Copying hex from $full_hex_file_path to ${build_path}/.mix/archives"
-  cp $full_hex_file_path ${build_path}/.mix/archives
+  cp -R $full_hex_file_path ${build_path}/.mix/archives
 }
 
 
